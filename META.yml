@@ -18,14 +18,16 @@ no_index:
     - t
     - inc
 requires:
+  Authen::SASL: 0
   Carp: 1.26
   Email::Sender::Simple: 1.300006
   Email::Sender::Transport::SMTP: 0
   Email::Simple: 2.201
   Email::Simple::Creator: 0
   HTTP::Tiny: 0.034
+  MIME::Base64: 0
   Method::Signatures: 0
   Time::Piece: 0
   YAML::XS: 0.41
   perl: 5.006
-version: 0.01
+version: 0.02

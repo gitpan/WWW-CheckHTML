@@ -1,5 +1,9 @@
 Revision history for WWW-CheckHTML
 
+0.02    2013-09-14
+        - Updated timeout logic.
+        - Updated Makefile dependencies.
+
 0.01    2013-09-09
-        First version, released on an unsuspecting world.
+        - First version, released on an unsuspecting world.
 

@@ -17,13 +17,13 @@ WWW::CheckHTML - check remote website HTML and send email alert via SMTP if chec
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
 BEGIN {
     require Exporter;
-    our $VERSION = 0.01;
+    our $VERSION = 0.02;
     our @ISA     = qw(Exporter);
     our @EXPORT  = qw(checkPage);
 }
@@ -97,9 +97,8 @@ func checkPage( $url, $htmlPattern, $emailAddress ) {
     {
         croak "Missing mandatory values in sendmail.yaml $!";
     }
-
-    my $response =
-      HTTP::Tiny->new( timeout => $CONFIG->{timeout} || 30 )->get($url);
+    my $timeout = $CONFIG->{timeout} || 30;
+    my $response = HTTP::Tiny->new(timeout => $timeout)->get($url);
       my $t        = localtime;
       my $datetime = $t->strftime;
       unless ( $response->{success} ) {

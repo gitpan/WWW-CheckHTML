@@ -27,6 +27,8 @@ WriteMakefile(
         'Email::Simple'                 => 2.201,
         'Email::Simple::Creator'        => 0,
         'Email::Sender::Transport::SMTP'=> 0,
+        'MIME::Base64'                  => 0,
+        'Authen::SASL'                  => 0,
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'WWW-CheckHTML-*' },
