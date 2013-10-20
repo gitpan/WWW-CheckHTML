@@ -30,4 +30,4 @@ requires:
   Time::Piece: 0
   YAML::XS: 0.41
   perl: 5.006
-version: 0.02
+version: 0.03

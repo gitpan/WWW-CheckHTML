@@ -17,13 +17,13 @@ WWW::CheckHTML - check remote website HTML and send email alert via SMTP if chec
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
 BEGIN {
     require Exporter;
-    our $VERSION = 0.02;
+    our $VERSION = 0.03;
     our @ISA     = qw(Exporter);
     our @EXPORT  = qw(checkPage);
 }
@@ -34,11 +34,11 @@ L<WWW::CheckHTML> exports a subroutine called checkPage to check remote web page
 
     use WWW::CheckHTML;
     
-    checkPage('http://www.google.com', '<title>', 'sillymoos@cpan.org');
+    checkPage('http://www.google.com', '<title>', 'sillymoos@cpan.org', '/home/sillymoose/sendmail.yaml');
 
 =head1 CONFIGURATION
 
-L<WWW::CheckHTML> requires a sendmail.yaml configuration file to be present in the root directory of the application. The configuration file should have the following key / pair values:
+L<WWW::CheckHTML> requires a yaml configuration file. The configuration file should have the following key / pair values:
 
 =over
 
@@ -64,7 +64,7 @@ timeout - the number of seconds to wait before terminating the HTTP request. Thi
 
 =back
 
-Example sendmail.yaml
+Example yaml configuration file
 
     ---
     host: smtp.google.com
@@ -77,18 +77,18 @@ Example sendmail.yaml
 
 =head2 checkPage
 
-Requires a url, regex pattern and an email address. Will try to get the url and if successful, will try to match the HTML regex pattern against the retrieved HTML. If either check fails, will send an email to the email address provided.
+Requires a url, regex pattern, an email address and a path to a yaml configuration file. Will initiate an HTTP get request for the url and if successful, will try to match the HTML regex pattern against the retrieved HTML. If either check fails, will send an alert email to the email address provided.
 
 =cut
 
 my $CONFIG;
 
-func checkPage( $url, $htmlPattern, $emailAddress ) {
+func checkPage( $url, $htmlPattern, $emailAddress, $yamlConfigPath? = 'sendmail.yaml') {
 
     # read sendmail.yaml
     $CONFIG =
-      -e 'sendmail.yaml'
-    ? LoadFile('sendmail.yaml')
+      -e $yamlConfigPath
+    ? LoadFile($yamlConfigPath)
     : croak "Error no sendmail.yaml not found $!";
 
       unless ( $CONFIG->{username}
