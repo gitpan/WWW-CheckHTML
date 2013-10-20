@@ -1,5 +1,8 @@
 Revision history for WWW-CheckHTML
 
+0.04    2013-10-20
+        - Updated t/CheckHTML.t planned test count
+
 0.03    2013-10-19
         - Updated to accept path variable for yaml configuration file 
 

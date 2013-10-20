@@ -17,13 +17,13 @@ WWW::CheckHTML - check remote website HTML and send email alert via SMTP if chec
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
 BEGIN {
     require Exporter;
-    our $VERSION = 0.03;
+    our $VERSION = 0.04;
     our @ISA     = qw(Exporter);
     our @EXPORT  = qw(checkPage);
 }
@@ -77,7 +77,7 @@ Example yaml configuration file
 
 =head2 checkPage
 
-Requires a url, regex pattern, an email address and a path to a yaml configuration file. Will initiate an HTTP get request for the url and if successful, will try to match the HTML regex pattern against the retrieved HTML. If either check fails, will send an alert email to the email address provided.
+Requires a url, regex pattern, an email address and optionally a path to a yaml configuration file. If the yaml filepath is not provided the checkPage method will search for 'sendmail.yaml' in the current directory context. checkPage initiates an HTTP get request for the url and if successful, will try to match the HTML regex pattern against the retrieved HTML. If either check fails, it will send an alert email to the email address provided.
 
 =cut
 
