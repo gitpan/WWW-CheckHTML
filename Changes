@@ -1,5 +1,8 @@
 Revision history for WWW-CheckHTML
 
+0.05    2013-11-17
+        - Updated CheckHTML.pm POD
+
 0.04    2013-10-20
         - Updated t/CheckHTML.t planned test count
 

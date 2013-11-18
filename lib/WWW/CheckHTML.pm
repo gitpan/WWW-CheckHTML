@@ -17,13 +17,13 @@ WWW::CheckHTML - check remote website HTML and send email alert via SMTP if chec
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
 BEGIN {
     require Exporter;
-    our $VERSION = 0.04;
+    our $VERSION = 0.05;
     our @ISA     = qw(Exporter);
     our @EXPORT  = qw(checkPage);
 }
@@ -145,7 +145,7 @@ func checkPage( $url, $htmlPattern, $emailAddress, $yamlConfigPath? = 'sendmail.
 
 =head1 AUTHOR
 
-David Farrell, C<< <sillymoos at cpan.org> >>
+David Farrell, C<< <sillymoos at cpan.org> >>, L<perltricks.com|http://perltricks.com>
 
 =head1 BUGS
 
